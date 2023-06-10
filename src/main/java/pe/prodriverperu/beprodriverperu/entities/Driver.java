@@ -18,7 +18,7 @@ public class Driver {
     private Integer id;
 
     @MapsId //This annotation is used to indicate that the primary key of the associated entity should be used as the foreign key in the referencing entity
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_user", nullable = false)
     private User user;
 
