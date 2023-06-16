@@ -22,6 +22,7 @@ public class RestJoboffer {
     /*JOB OFFER*/
 
     //INSERT JOBOFFER
+    @PostMapping("/joboffer")
     public JobOfferDTO insertJobOfferDTO(@RequestBody JobOfferDTO jobOfferDTO){
         Joboffer joboffer;
         try{
@@ -34,6 +35,7 @@ public class RestJoboffer {
     }
 
     //UPDATE JOBOFFER
+    @PutMapping("/joboffer/{id}")
     public ResponseEntity<JobOfferDTO> updateJobOffer(@PathVariable(value = "id")Integer id, @RequestBody JobOfferDTO jobOfferDTO){
         Joboffer joboffer;
         Joboffer jobofferUpdate;
