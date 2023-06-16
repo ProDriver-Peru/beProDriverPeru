@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Table(name = "joboffer")
 public class Joboffer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -31,7 +32,7 @@ public class Joboffer {
     @Column(name = "vehicle", nullable = false, length = 32)
     private String vehicle;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_employer", nullable = false)
     private User idEmployer;
 }

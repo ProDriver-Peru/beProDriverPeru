@@ -17,7 +17,7 @@ public class Employer {
     private Integer id;
 
     @MapsId
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_user", nullable = false)
     private User user;
 

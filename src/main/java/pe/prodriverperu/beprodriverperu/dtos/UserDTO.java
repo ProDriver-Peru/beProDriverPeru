@@ -20,4 +20,5 @@ public class UserDTO {
     private String password;
     private LocalDate dateOfBirth;
     private String plan;
+    private String description;
 }

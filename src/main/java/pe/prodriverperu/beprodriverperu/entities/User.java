@@ -31,5 +31,7 @@ public class User {
     private LocalDate dateOfBirth;
     @Column(name = "plan", nullable = false, length = 16)
     private String plan;
+    @Column(name = "description", nullable = false, length = 255)
+    private String description;
 
 }

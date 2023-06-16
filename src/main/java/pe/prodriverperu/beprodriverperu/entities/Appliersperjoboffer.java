@@ -14,13 +14,14 @@ import java.time.Instant;
 @Table(name = "appliersperjoboffer")
 public class Appliersperjoboffer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_joboffer", nullable = false)
     private Joboffer idJoboffer;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_driver", nullable = false)
     private User idDriver;
 
