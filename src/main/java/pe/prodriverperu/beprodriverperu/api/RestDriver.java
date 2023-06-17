@@ -76,9 +76,19 @@ public class RestDriver {
         return new ResponseEntity<List<DriverDTO>>(listDriverDTO,HttpStatus.OK);
     }
 
-    /*-----------------------------------------------------*/
-    /*EMPLOYER*/
+    /*LISTAR DRIVERS*/
 
+    public ResponseEntity<List<DriverDTO>> listDriver(){
+        List<Driver> listDriver;
+        List<DriverDTO> listDriverDTO;
+        try{
+            listDriver = businessDriver.listDriver();
+            listDriverDTO = convertToLisDto(listDriver);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido listar");
+        }
+        return new ResponseEntity<List<DriverDTO>>(listDriverDTO,HttpStatus.OK);
+    }
 
     //-----------------------------------------------------DTO----------------------------------------------------------
     /*DRIVER DTO*/
