@@ -34,5 +34,5 @@ public class Joboffer {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_employer", nullable = false)
-    private User idEmployer;
+    private Employer idEmployer;
 }

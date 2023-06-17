@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface RepositoryJobOffer extends JpaRepository<Joboffer,Integer> {
     List<Joboffer> findByIdEmployer(Integer idEmployer);
+        /*
+    @Query("SELECT jo FROM Joboffer jo WHERE jo.idEmployer=:pk")
+    List<Joboffer> findEmployer(@Param("pk") Integer pk);
+     */
 }
