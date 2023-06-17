@@ -32,7 +32,7 @@ public class Joboffer {
     @Column(name = "vehicle", nullable = false, length = 32)
     private String vehicle;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_employer", nullable = false)
-    private Employer idEmployer;
+    @ManyToOne
+    @JoinColumn(name="id_employer")
+    private Employer user;
 }
