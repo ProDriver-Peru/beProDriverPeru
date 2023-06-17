@@ -3,10 +3,7 @@ package pe.prodriverperu.beprodriverperu.api;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pe.prodriverperu.beprodriverperu.business.BusinessEmployer;
 import pe.prodriverperu.beprodriverperu.dtos.EmployerDTO;
@@ -14,6 +11,7 @@ import pe.prodriverperu.beprodriverperu.entities.Employer;
 
 import java.util.List;
 import java.util.stream.Collectors;
+@CrossOrigin(origins = {"http://172.190.169.21"})
 @RestController
 @RequestMapping("/api")
 public class RestEmployer {

@@ -13,6 +13,7 @@ import pe.prodriverperu.beprodriverperu.entities.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = {"http://172.190.169.21"})
 @RestController
 @RequestMapping("/api")
 public class RestDriver {
