@@ -77,7 +77,7 @@ public class RestDriver {
     }
 
     /*LISTAR DRIVERS*/
-
+    @GetMapping("/driver")
     public ResponseEntity<List<DriverDTO>> listDriver(){
         List<Driver> listDriver;
         List<DriverDTO> listDriverDTO;
