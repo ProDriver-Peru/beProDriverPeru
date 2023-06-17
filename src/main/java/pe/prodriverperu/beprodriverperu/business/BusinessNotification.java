@@ -25,7 +25,7 @@ public class BusinessNotification {
 
     //LIST BY ID EMPLOYER
     public List<Notification> notificationList(Integer idEmployer){
-        return repositoryNotification.findByIdUserEmployer(idEmployer);
+        return repositoryNotification.findIdEmployer(idEmployer);
     }
 
 }

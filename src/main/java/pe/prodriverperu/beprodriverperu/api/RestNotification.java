@@ -36,7 +36,7 @@ public class RestNotification {
 
     //NOTIFICATION BY ID
     @GetMapping("/notification/{id}")
-    public ResponseEntity<NotificationDTO> getNotificationById(@PathVariable(name = "idNotification") Integer idNotification){
+    public ResponseEntity<NotificationDTO> getNotificationById(@PathVariable(name = "id") Integer idNotification){
         Notification notification;
         NotificationDTO notificationDTO;
         try{
