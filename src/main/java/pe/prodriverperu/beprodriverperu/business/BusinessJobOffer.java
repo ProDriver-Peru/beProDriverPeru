@@ -31,7 +31,7 @@ public class BusinessJobOffer {
 
     //LIST BY ID EMPLOYER
     public List<Joboffer> listJobOfferByIdEmployer(Integer idEmployer){
-        return repositoryJobOffer.findByIdEmployerEquals(idEmployer);
+        return repositoryJobOffer.findByIdEmployer(idEmployer);
     }
 
     //DELETE
