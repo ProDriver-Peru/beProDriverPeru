@@ -35,4 +35,13 @@ public class Joboffer {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_employer", nullable = false)
     private Employer idEmployer;
+
+    @Column(name = "arrangement", nullable = false)
+    private String arrangement;
+
+    @Column(name = "location", nullable = false)
+    private String location;
+
+    @Column(name = "area", nullable = false)
+    private String area;
 }

@@ -14,4 +14,7 @@ public class EmployerDTO {
     private Integer id;
     private User user;
     private String ruc;
+    private String imageCompany;
+    private String companyName;
+    private String companyDescription;
 }

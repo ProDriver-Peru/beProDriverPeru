@@ -22,4 +22,7 @@ public class JobOfferDTO {
     private Integer appliers;
     private String vehicle;
     private Employer idEmployer;
+    private String arrangement;
+    private String location;
+    private String area;
 }

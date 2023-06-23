@@ -23,4 +23,13 @@ public class Employer {
 
     @Column(name = "ruc", nullable = false, length = 16)
     private String ruc;
+
+    @Column(name = "imageCompany", nullable = false)
+    private String imageCompany;
+
+    @Column(name = "companyName", nullable = false)
+    private String companyName;
+
+    @Column(name = "companyDescription", nullable = false)
+    private String companyDescription;
 }

@@ -20,4 +20,6 @@ public class DriverDTO {
     private String licensetype;
 
     private String license;
+
+    private String sector;
 }

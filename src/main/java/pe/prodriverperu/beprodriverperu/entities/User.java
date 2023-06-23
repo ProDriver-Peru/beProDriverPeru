@@ -4,6 +4,7 @@ package pe.prodriverperu.beprodriverperu.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.time.LocalDate;
 
 @Getter @Setter @NoArgsConstructor @ToString @AllArgsConstructor
@@ -17,7 +18,7 @@ public class User {
     private Integer id;
     @Column(name = "rol", nullable = false, length = 16)
     private String rol;
-    @Column(name = "dni", nullable = false, length = 8)
+    @Column(name = "dni", nullable = false, length = 8, unique = true)
     private String dni;
     @Column(name = "name", nullable = false, length = 32)
     private String name;
@@ -33,5 +34,8 @@ public class User {
     private String plan;
     @Column(name = "description", nullable = false, length = 255)
     private String description;
+
+    @Column(name = "image", nullable = false)
+    private Long imageProfile;
 
 }
