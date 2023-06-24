@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pe.prodriverperu.beprodriverperu.business.BusinessAppliersperjoboffer;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = {"http://172.190.169.21"})
 @RestController
 @RequestMapping("/api")
+//@PreAuthorize("hasAuthority('Employer')")
 public class RestApplierperjoboffer {
     @Autowired
     private BusinessAppliersperjoboffer businessAppliersperjoboffer;

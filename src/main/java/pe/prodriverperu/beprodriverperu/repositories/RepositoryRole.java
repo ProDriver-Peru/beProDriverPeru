@@ -2,8 +2,9 @@ package pe.prodriverperu.beprodriverperu.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pe.prodriverperu.beprodriverperu.entities.Employer;
+import pe.prodriverperu.beprodriverperu.entities.Role;
 
 @Repository
-public interface RepositoryEmployer extends JpaRepository<Employer, Integer> {
+public interface RepositoryRole extends JpaRepository<Role, Long> {
+    Role findRoleByRol(String rol);
 }

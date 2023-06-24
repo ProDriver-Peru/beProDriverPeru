@@ -3,6 +3,7 @@ package pe.prodriverperu.beprodriverperu.dtos;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pe.prodriverperu.beprodriverperu.entities.Users;
 
 import javax.persistence.Column;
 import java.time.LocalDate;
@@ -16,10 +17,9 @@ public class UserDTO {
     private String dni;
     private String name;
     private String lastName;
-    private String email;
-    private String password;
     private LocalDate dateOfBirth;
     private String plan;
     private String description;
     private Long imageProfile;
+    private Users users;
 }

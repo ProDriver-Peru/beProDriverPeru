@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = {"http://172.190.169.21"})
 @RestController
 @RequestMapping("/api")
+//@PreAuthorize("hasAuthority('Employer')")
+//@PreAuthorize("hasAuthority('Employer')")
 public class RestNotification {
     @Autowired
     private BusinessNotification businessNotification;

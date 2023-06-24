@@ -24,18 +24,16 @@ public class User {
     private String name;
     @Column(name = "lastname", nullable = false, length = 32)
     private String lastName;
-    @Column(name = "email", nullable = false, length = 32)
-    private String email;
-    @Column(name = "password", nullable = false, length = 32)
-    private String password;
     @Column(name = "dateofbirth", nullable = false)
     private LocalDate dateOfBirth;
     @Column(name = "plan", nullable = false, length = 16)
     private String plan;
     @Column(name = "description", nullable = false, length = 255)
     private String description;
-
     @Column(name = "image", nullable = false)
     private Long imageProfile;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "users_id")
+    private Users users;
 
 }
