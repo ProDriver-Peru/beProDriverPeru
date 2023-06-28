@@ -26,6 +26,7 @@ public class RestEmployer {
             employer = convertToEntityEmployer(employerDTO);
             employer = businessEmployer.insert(employer);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible registrar");
         }
         return convertToDtoEmployer(employer);

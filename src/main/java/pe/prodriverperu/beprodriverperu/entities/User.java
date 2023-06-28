@@ -35,7 +35,7 @@ public class User {
     @Column(name = "description", nullable = false, length = 255)
     private String description;
 
-    @Column(name = "image", nullable = false)
-    private Long imageProfile;
+    @Column(name = "image", nullable = true)
+    private String imageProfile;
 
 }
