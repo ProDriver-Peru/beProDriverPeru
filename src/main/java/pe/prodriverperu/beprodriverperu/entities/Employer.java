@@ -30,6 +30,6 @@ public class Employer {
     @Column(name = "companyName", nullable = false)
     private String companyName;
 
-    @Column(name = "companyDescription", nullable = false)
+    @Column(name = "companyDescription", nullable = true)
     private String companyDescription;
 }
