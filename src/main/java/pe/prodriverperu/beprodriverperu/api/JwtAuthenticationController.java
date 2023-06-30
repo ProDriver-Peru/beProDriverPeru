@@ -18,8 +18,8 @@ import pe.prodriverperu.beprodriverperu.security.JwtResponse;
 import pe.prodriverperu.beprodriverperu.security.JwtTokenUtil;
 
 
+@CrossOrigin(origins = {"d"})
 @RestController
-@CrossOrigin
 public class JwtAuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;
