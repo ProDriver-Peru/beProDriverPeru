@@ -20,6 +20,6 @@ public class UserDTO {
     private LocalDate dateOfBirth;
     private String plan;
     private String description;
-    private Long imageProfile;
+    private String imageProfile;
     private Users users;
 }

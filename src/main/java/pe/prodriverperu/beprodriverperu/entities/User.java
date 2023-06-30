@@ -31,7 +31,7 @@ public class User {
     @Column(name = "description", nullable = false, length = 255)
     private String description;
     @Column(name = "image", nullable = false)
-    private Long imageProfile;
+    private String imageProfile;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "users_id")
     private Users users;
