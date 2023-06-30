@@ -28,7 +28,7 @@ public class RestApplierperjoboffer {
         Appliersperjoboffer appliersperjoboffer;
         try{
             appliersperjoboffer = convertToEntityAppliersperjoboffer(appliersperjobofferDTO);
-            appliersperjoboffer = businessAppliersperjoboffer.inserApplierperjoboffer(appliersperjoboffer);
+            appliersperjoboffer = businessAppliersperjoboffer.insertApplierperjoboffer(appliersperjoboffer);
         } catch (Exception e){
             e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible registrar");

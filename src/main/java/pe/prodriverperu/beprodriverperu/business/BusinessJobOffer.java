@@ -2,6 +2,7 @@ package pe.prodriverperu.beprodriverperu.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.prodriverperu.beprodriverperu.dtos.JobOfferDTO;
 import pe.prodriverperu.beprodriverperu.entities.Driver;
 import pe.prodriverperu.beprodriverperu.entities.Joboffer;
 import pe.prodriverperu.beprodriverperu.repositories.RepositoryJobOffer;
@@ -49,4 +50,5 @@ public class BusinessJobOffer {
     public void delete(Integer id){
         repositoryJobOffer.deleteById(id);
     }
+
 }

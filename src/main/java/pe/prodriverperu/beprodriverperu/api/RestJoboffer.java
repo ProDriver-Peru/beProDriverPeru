@@ -98,6 +98,21 @@ public class RestJoboffer {
         return new ResponseEntity<List<JobOfferDTO>>(jobOfferDTOSList, HttpStatus.OK);
     }
 
+    //LIST USER BY ID EMPLOYER
+    @GetMapping("/jobOffer/idJobOffer/{idEmployer}")
+    public ResponseEntity<List<DriverDTO>> listJDriverByIdJobOffer(@PathVariable(name = "idEmployer")Integer idEmployer){
+        List<Driver> driverList;
+        List<DriverDTO> driverDTOList;
+        try{
+            driverList = businessJobOffer.listJDriverByIdJobOffer(idEmployer);
+            driverDTOList = convertToLisDto(driverList);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido listar usuarios por idJoboffer");
+        }
+        return new ResponseEntity<List<DriverDTO>>(driverDTOList, HttpStatus.OK);
+    }
+
     //DELETE
     @DeleteMapping("/jobOffer/{id}")
     public void deleteId(@PathVariable(name = "id")Integer id){
@@ -124,6 +139,24 @@ public class RestJoboffer {
     private List<JobOfferDTO> convertToLisDtoJobOffer(List<Joboffer> list){
         return list.stream()
                 .map(this::convertToDtoJobOffer)
+                .collect(Collectors.toList());
+    }
+
+    //-----------------------------------------------------DTO----------------------------------------------------------
+    /*DRIVER DTO*/
+    private DriverDTO convertToDto(Driver driver) {
+        ModelMapper modelMapper = new ModelMapper();
+        DriverDTO driverDTO = modelMapper.map(driver, DriverDTO.class);
+        return driverDTO;
+    }
+    private Driver convertToEntity(DriverDTO driverDTO) {
+        ModelMapper modelMapper = new ModelMapper();
+        Driver post = modelMapper.map(driverDTO, Driver.class);
+        return post;
+    }
+    private List<DriverDTO> convertToLisDto(List<Driver> list){
+        return list.stream()
+                .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
 

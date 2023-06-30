@@ -22,4 +22,6 @@ public class DriverDTO {
     private String license;
 
     private String sector;
+
+    private Integer yearsExperience;
 }

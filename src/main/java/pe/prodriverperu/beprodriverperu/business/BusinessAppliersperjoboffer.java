@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.prodriverperu.beprodriverperu.entities.Appliersperjoboffer;
 import pe.prodriverperu.beprodriverperu.entities.Driver;
+import pe.prodriverperu.beprodriverperu.entities.Joboffer;
 import pe.prodriverperu.beprodriverperu.repositories.RepositoryAppliersperjoboffer;
+import pe.prodriverperu.beprodriverperu.repositories.RepositoryJobOffer;
 
 import java.util.List;
 
@@ -12,10 +14,18 @@ import java.util.List;
 public class BusinessAppliersperjoboffer {
     @Autowired
     private RepositoryAppliersperjoboffer repositoryAppliersperjoboffer;
+    @Autowired
+    private RepositoryJobOffer repositoryJobOffer;
 
     //INSERT
-    public Appliersperjoboffer inserApplierperjoboffer(Appliersperjoboffer appliersperjoboffer) {
+    public Appliersperjoboffer insertApplierperjoboffer(Appliersperjoboffer appliersperjoboffer) {
         Appliersperjoboffer appliersperjoboffer1 = repositoryAppliersperjoboffer.save(appliersperjoboffer);
+
+        Joboffer joboffer = repositoryJobOffer.findById(appliersperjoboffer.getId()).orElseThrow();
+        joboffer.setAppliers(joboffer.getAppliers()+1);
+
+        repositoryJobOffer.save(joboffer);
+
         return appliersperjoboffer1;
     }
     //UPDATE

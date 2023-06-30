@@ -34,5 +34,8 @@ public class Driver {
     @Column(name = "sector", nullable = false)
     private String sector;
 
+    @Column(name = "yearsExperience", nullable = false)
+    private Integer yearsExperience;
+
 
 }
