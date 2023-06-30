@@ -6,5 +6,5 @@ import pe.prodriverperu.beprodriverperu.entities.Employer;
 import java.util.List;
 
 public interface RepositoryEmployer extends JpaRepository<Employer, Integer> {
-    List<Employer> findByLicensetype(String license);
+
 }

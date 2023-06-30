@@ -29,9 +29,4 @@ public class BusinessEmployer {
         Employer employer = repositoryEmployer.findById(id).get();
         return employer;
     }
-
-    //LIST BY LICENSE
-    public List<Employer> listbyLicenseEmployer(String license){
-        return repositoryEmployer.findByLicensetype(license);
-    }
 }

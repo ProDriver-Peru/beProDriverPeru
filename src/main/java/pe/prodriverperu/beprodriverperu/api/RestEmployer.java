@@ -64,23 +64,6 @@ public class RestEmployer {
         return new ResponseEntity<EmployerDTO>(employerDTO,HttpStatus.OK);
     }
 
-    //LIST BY LICENSE
-    @GetMapping("/employer/licenseType/{licenseType}")
-    public ResponseEntity<List<EmployerDTO>> listByLicenseTypeEmployer(@PathVariable(value = "licenseType") String license){
-        List<Employer>listEmployer;
-        List<EmployerDTO> listEmployerDTO;
-        try{
-            listEmployer=businessEmployer.listbyLicenseEmployer(license);
-            listEmployerDTO=convertToLisDto(listEmployer);
-        }catch (Exception e){
-            e.printStackTrace();
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido listar");
-        }
-        return new ResponseEntity<List<EmployerDTO>>(listEmployerDTO,HttpStatus.OK);
-    }
-
-
-
 
     //---------DTO----------
     private EmployerDTO convertToDto(Employer employer) {
