@@ -7,8 +7,6 @@ public class RoleDTO {
 
     private String rol;
 
-    private Users user;
-
     public Long getId() {
         return id;
     }
@@ -23,13 +21,5 @@ public class RoleDTO {
 
     public void setRol(String rol) {
         this.rol = rol;
-    }
-
-    public Users getUser() {
-        return user;
-    }
-
-    public void setUser(Users user) {
-        this.user = user;
     }
 }

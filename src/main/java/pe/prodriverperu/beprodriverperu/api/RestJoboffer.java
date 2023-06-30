@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pe.prodriverperu.beprodriverperu.business.BusinessJobOffer;
@@ -16,7 +17,6 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = {"http://172.190.169.21"})
 @RestController
 @RequestMapping("/api")
-//@PreAuthorize("hasAuthority('Employer')")
 public class RestJoboffer {
     @Autowired
     private BusinessJobOffer businessJobOffer;
@@ -25,12 +25,14 @@ public class RestJoboffer {
 
     //INSERT JOBOFFER
     @PostMapping("/joboffer")
+    @PreAuthorize("hasAuthority('EMPLOYER')")
     public JobOfferDTO insertJobOfferDTO(@RequestBody JobOfferDTO jobOfferDTO){
         Joboffer joboffer;
         try{
             joboffer=convertToEntityJobOffer(jobOfferDTO);
             joboffer=businessJobOffer.insertJobOffer(joboffer);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible registrar Oferta de trabajo");
         }
         return convertToDtoJobOffer(joboffer);
@@ -46,6 +48,7 @@ public class RestJoboffer {
             jobofferUpdate = businessJobOffer.updateJobOffer(id,joboffer);
             jobOfferDTO = convertToDtoJobOffer(jobofferUpdate);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible actualizar oferta de trabajo");
         }
         return new ResponseEntity<JobOfferDTO>(jobOfferDTO, HttpStatus.OK);
@@ -59,6 +62,7 @@ public class RestJoboffer {
             joboffer = businessJobOffer.getByIdJobOffer(idJoboffer);
             jobOfferDTO = convertToDtoJobOffer(joboffer);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible encontrar datos de la oferta de trabajo");
         }
         return new ResponseEntity<JobOfferDTO>(jobOfferDTO,HttpStatus.OK);
@@ -66,6 +70,7 @@ public class RestJoboffer {
 
     //LIST JOB OFFERS BY ID EMPLOYER
     @GetMapping("/jobOffer/idEmployer/{idEmployer}")
+    @PreAuthorize("hasAuthority('EMPLOYER')")
     public ResponseEntity<List<JobOfferDTO>> listJobofferByIdEmployer(@PathVariable(name = "idEmployer")Integer idEmployer){
         List<Joboffer> joboffersList;
         List<JobOfferDTO> jobOfferDTOSList;
@@ -85,6 +90,7 @@ public class RestJoboffer {
         try{
             businessJobOffer.delete(id);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible eliminar la oferta de trabajo");
         }
     }

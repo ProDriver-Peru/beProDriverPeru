@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pe.prodriverperu.beprodriverperu.business.BusinessEmployer;
+import pe.prodriverperu.beprodriverperu.business.BusinessUsers;
 import pe.prodriverperu.beprodriverperu.dtos.EmployerDTO;
 import pe.prodriverperu.beprodriverperu.entities.Employer;
 
@@ -26,6 +27,7 @@ public class RestEmployer {
             employer = convertToEntityEmployer(employerDTO);
             employer = businessEmployer.insert(employer);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible registrar");
         }
         return convertToDtoEmployer(employer);

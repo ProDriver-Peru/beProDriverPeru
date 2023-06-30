@@ -9,14 +9,11 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "roles", uniqueConstraints = { @UniqueConstraint(columnNames = { "user_id", "rol" }) })
+@Table(name = "roles")
 public class Role implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String rol;
-    @ManyToOne
-    @JoinColumn(name="user_id", nullable=false)
-    private User user;
 }

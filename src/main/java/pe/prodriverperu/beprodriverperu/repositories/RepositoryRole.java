@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import pe.prodriverperu.beprodriverperu.entities.Role;
 
 @Repository
-public interface RepositoryRole extends JpaRepository<Role, Long> {
+public interface RepositoryRole extends JpaRepository<Role, Integer> {
     Role findRoleByRol(String rol);
 }

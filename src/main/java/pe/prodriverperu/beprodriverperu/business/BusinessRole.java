@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pe.prodriverperu.beprodriverperu.entities.Role;
 import pe.prodriverperu.beprodriverperu.repositories.RepositoryRole;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -12,8 +13,13 @@ public class BusinessRole {
     @Autowired
     private RepositoryRole repositoryRole;
 
-    public void insert(Role role){
-        repositoryRole.save(role);
+    @Transactional
+    public Integer insertRol(Role role){
+        if (repositoryRole.findRoleByRol(role.getRol())==null){
+            repositoryRole.save(role);
+            return 1;
+        }
+        return 0;
     }
 
     public List<Role> list(){

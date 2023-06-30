@@ -11,9 +11,12 @@ import java.util.List;
 public class BusinessDriver {
     @Autowired
     private RepositoryDriver repositoryDriver;
+    @Autowired
+    private BusinessUsers uService;
     //INSERT
     public Driver insertDriver(Driver driver){
         Driver driver1 = repositoryDriver.save(driver);
+        uService.insertUserRol(driver.getId(), 3);
         return driver1;
     }
     //UPDATE

@@ -18,11 +18,7 @@ public interface RepositoryUsers extends JpaRepository<Users, Integer> {
 
 
     //INSERTAR ROLES
-    @Transactional
     @Modifying
-    @Query(value = "insert into roles (rol, user_id) VALUES (:rol, :user_id)", nativeQuery = true)
-    public void insRol(@Param("rol") String authority, @Param("user_id") Long user_id);
-
-    @Query(value = "insert into user_roles (user_id, role_id) VALUES (:user_id, :rol_id)", nativeQuery = true)
-    public Integer insertUserRol(@Param("user_id") Long user_id, @Param("rol_id") Long rol_id);
+    @Query(value = "INSERT INTO user_roles (users_id, role_id) VALUES (:user_id, :rol_id)", nativeQuery = true)
+    public void insertUserRol(@Param("user_id") Integer user_id, @Param("rol_id") Integer rol_id);
 }

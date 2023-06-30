@@ -1,18 +1,19 @@
 package pe.prodriverperu.beprodriverperu.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import pe.prodriverperu.beprodriverperu.business.BusinessRole;
 import pe.prodriverperu.beprodriverperu.business.BusinessUsers;
 import pe.prodriverperu.beprodriverperu.entities.Role;
+
+import java.util.List;
 
 @Controller
 @SessionAttributes
@@ -23,6 +24,7 @@ public class RestRole {
     @Autowired
     private BusinessRole rService;
 
+    /*
     @GetMapping("/new")
     public String newRole(Model model) {
         model.addAttribute("role", new Role());
@@ -44,15 +46,17 @@ public class RestRole {
         return "role/role";
 
     }
+     */
+
+    @PostMapping("/save")
+    public ResponseEntity<Integer> newRole(@RequestBody Role role) {
+        Integer rpta;
+        rpta = rService.insertRol(role);
+        return new ResponseEntity<Integer>(1, HttpStatus.OK);
+    }
 
     @GetMapping("/list")
-    public String listRole(Model model) {
-        try {
-            model.addAttribute("role", new Role());
-            model.addAttribute("listaRoles", rService.list());
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-        }
-        return "role/listRole";
+    public List<Role> listRole(Model model) {
+        return rService.list();
     }
 }

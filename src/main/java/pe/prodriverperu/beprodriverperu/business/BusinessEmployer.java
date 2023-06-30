@@ -9,10 +9,13 @@ import pe.prodriverperu.beprodriverperu.repositories.RepositoryEmployer;
 public class BusinessEmployer{
     @Autowired
     private RepositoryEmployer repositoryEmployer;
+    @Autowired
+    private BusinessUsers uService;
 
     //INSERT
     public Employer insert(Employer employer) {
         Employer employer1 = repositoryEmployer.save(employer);
+        uService.insertUserRol(employer.getId(), 2);
         return employer1;
     }
 

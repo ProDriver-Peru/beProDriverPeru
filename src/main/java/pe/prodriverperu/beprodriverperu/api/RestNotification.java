@@ -32,6 +32,7 @@ public class RestNotification {
             notification = convertToEntityNotification(notificationDTO);
             notification = businessNotification.insertNotification(notification);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible registrar notificación");
         }
         return new ResponseEntity<NotificationDTO>(convertToDtoNotification(notification),HttpStatus.OK);
@@ -46,6 +47,7 @@ public class RestNotification {
             notification = businessNotification.listNotificationById(idNotification);
             notificationDTO = convertToDtoNotification(notification);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible encontrar datos de la notificación");
         }
         return new ResponseEntity<NotificationDTO>(notificationDTO, HttpStatus.OK);
@@ -60,6 +62,7 @@ public class RestNotification {
             notificationList = businessNotification.notificationList(idEmployer);
             notificationDTOS = convertToLisDtoNotification(notificationList);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido listar");
         }
         return new ResponseEntity<List<NotificationDTO>>(notificationDTOS, HttpStatus.OK);
