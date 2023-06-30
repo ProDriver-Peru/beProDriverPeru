@@ -2,6 +2,7 @@ package pe.prodriverperu.beprodriverperu.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.prodriverperu.beprodriverperu.entities.Driver;
 import pe.prodriverperu.beprodriverperu.entities.Joboffer;
 import pe.prodriverperu.beprodriverperu.repositories.RepositoryJobOffer;
 
@@ -37,6 +38,11 @@ public class BusinessJobOffer {
     //LIST BY ID EMPLOYER
     public List<Joboffer> listJobOfferByIdEmployer(Integer idEmployer){
         return repositoryJobOffer.findEmployer(idEmployer);
+    }
+
+    //LIST USER BY ID EMPLOYER
+    public List<Driver> listJDriverByIdJobOffer(Integer idJobOffer){
+        return repositoryJobOffer.findUsers(idJobOffer);
     }
 
     //DELETE

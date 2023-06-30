@@ -13,4 +13,7 @@ public interface RepositoryNotification extends JpaRepository<Notification,Integ
 
     @Query("SELECT n FROM Notification n WHERE n.idUserEmployer.id=:pk")
     List<Notification> findIdEmployer(@Param("pk") Integer pk);
+
+    @Query("SELECT n FROM Notification n WHERE n.idUserDriver.id=:pk")
+    List<Notification> findIdDriver(@Param("pk") Integer pk);
 }

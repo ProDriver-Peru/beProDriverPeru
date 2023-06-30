@@ -66,6 +66,21 @@ public class RestNotification {
         return new ResponseEntity<List<NotificationDTO>>(notificationDTOS, HttpStatus.OK);
     }
 
+    //NOTIFICATION BY Driver
+    @GetMapping("/notification/idDriver/{idDriver}")
+    public ResponseEntity<List<NotificationDTO>> listNotificationByIdDriver(@PathVariable(name = "idDriver")Integer idDriver){
+        List<Notification> notificationList;
+        List<NotificationDTO> notificationDTOS;
+        try{
+            notificationList = businessNotification.notificationListIdDriver(idDriver);
+            notificationDTOS = convertToLisDtoNotification(notificationList);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido listar por el id Driver");
+        }
+        return new ResponseEntity<List<NotificationDTO>>(notificationDTOS, HttpStatus.OK);
+    }
+
     //-----------------------------------------------------DTO----------------------------------------------------------
     /*NOTIFICATION DTO*/
     private NotificationDTO convertToDtoNotification(Notification notification) {

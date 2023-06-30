@@ -28,4 +28,9 @@ public class BusinessNotification {
         return repositoryNotification.findIdEmployer(idEmployer);
     }
 
+    //LIST BY ID DRIVER
+    public List<Notification> notificationListIdDriver(Integer idDriver){
+        return repositoryNotification.findIdDriver(idDriver);
+    }
+
 }
