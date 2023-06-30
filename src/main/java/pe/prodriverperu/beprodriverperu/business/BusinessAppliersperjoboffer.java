@@ -14,7 +14,7 @@ public class BusinessAppliersperjoboffer {
     private RepositoryAppliersperjoboffer repositoryAppliersperjoboffer;
 
     //INSERT
-    public Appliersperjoboffer inserApplierperjoboffer(Appliersperjoboffer appliersperjoboffer){
+    public Appliersperjoboffer inserApplierperjoboffer(Appliersperjoboffer appliersperjoboffer) {
         Appliersperjoboffer appliersperjoboffer1 = repositoryAppliersperjoboffer.save(appliersperjoboffer);
         return appliersperjoboffer1;
     }

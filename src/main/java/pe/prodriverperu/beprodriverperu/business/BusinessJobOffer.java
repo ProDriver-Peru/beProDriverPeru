@@ -23,6 +23,11 @@ public class BusinessJobOffer {
         return repositoryJobOffer.save(jobofferUpdate);
     }
 
+    //LIST
+    public List<Joboffer> listJobOffer(){
+        return repositoryJobOffer.findAll();
+    }
+
     //LIST BY ID
     public Joboffer getByIdJobOffer(Integer id){
         Joboffer joboffer = repositoryJobOffer.findById(id).get();

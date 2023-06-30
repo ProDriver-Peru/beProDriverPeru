@@ -36,6 +36,8 @@ public class RestApplierperjoboffer {
         return convertToDtoAppliersperJobOffer(appliersperjoboffer);
     }
 
+    //LIST
+
     //UPDATE
     @PutMapping("/applierperjoboffer/{id}")
     public ResponseEntity<AppliersperjobofferDTO> updateAppliersperjoboffer(@PathVariable(value = "id") Integer id, @RequestBody AppliersperjobofferDTO appliersperjobofferDTO){

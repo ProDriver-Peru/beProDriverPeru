@@ -7,7 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pe.prodriverperu.beprodriverperu.business.BusinessJobOffer;
+import pe.prodriverperu.beprodriverperu.dtos.DriverDTO;
 import pe.prodriverperu.beprodriverperu.dtos.JobOfferDTO;
+import pe.prodriverperu.beprodriverperu.entities.Driver;
 import pe.prodriverperu.beprodriverperu.entities.Joboffer;
 
 import java.util.List;
@@ -34,6 +36,21 @@ public class RestJoboffer {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible registrar Oferta de trabajo");
         }
         return convertToDtoJobOffer(joboffer);
+    }
+
+    //LIST JOB OFFERS
+    @GetMapping("/joboffer")
+    public ResponseEntity<List<JobOfferDTO>> listJobOffer(){
+        List<Joboffer> listJobOffer;
+        List<JobOfferDTO> listJobOfferDTO;
+        try{
+            listJobOffer = businessJobOffer.listJobOffer();
+            listJobOfferDTO = convertToLisDtoJobOffer(listJobOffer);
+        } catch (Exception e){
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido listar ofertas de trabajo");
+        }
+        return new ResponseEntity<List<JobOfferDTO>>(listJobOfferDTO,HttpStatus.OK);
     }
 
     //UPDATE JOBOFFER
