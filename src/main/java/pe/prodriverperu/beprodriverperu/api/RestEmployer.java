@@ -27,6 +27,7 @@ public class RestEmployer {
             employer = convertToEntity(employerDTO);
             employer = businessEmployer.insert(employer);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible registrar");
         }
         return convertToDto(employer);
@@ -42,6 +43,7 @@ public class RestEmployer {
             employerUpdate = businessEmployer.updateEmployer(id, employer);
             employerDTO = convertToDto(employerUpdate);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible actualizar");
         }
         return new ResponseEntity<EmployerDTO>(employerDTO, HttpStatus.OK);
@@ -56,6 +58,7 @@ public class RestEmployer {
             employer = businessEmployer.listByIdEmployer(id);
             employerDTO = convertToDto(employer);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible encontrar sus datos");
         }
         return new ResponseEntity<EmployerDTO>(employerDTO,HttpStatus.OK);
@@ -70,6 +73,7 @@ public class RestEmployer {
             listEmployer=businessEmployer.listbyLicenseEmployer(license);
             listEmployerDTO=convertToLisDto(listEmployer);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido listar");
         }
         return new ResponseEntity<List<EmployerDTO>>(listEmployerDTO,HttpStatus.OK);
