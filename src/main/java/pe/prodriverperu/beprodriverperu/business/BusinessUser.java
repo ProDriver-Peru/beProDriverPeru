@@ -17,4 +17,8 @@ public class BusinessUser {
         return repositoryUser.save(user);
     }
 
+    public User signin(String email, String password){
+        return repositoryUser.findByEmailAndPassword(email,password);
+    }
+
 }

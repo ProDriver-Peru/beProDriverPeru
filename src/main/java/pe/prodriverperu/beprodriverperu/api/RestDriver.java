@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pe.prodriverperu.beprodriverperu.business.BusinessDriver;
+import pe.prodriverperu.beprodriverperu.business.BusinessUser;
 import pe.prodriverperu.beprodriverperu.dtos.*;
 import pe.prodriverperu.beprodriverperu.entities.*;
 
@@ -19,6 +20,9 @@ import java.util.stream.Collectors;
 public class RestDriver {
     @Autowired
     private BusinessDriver businessDriver;
+
+    @Autowired
+    private BusinessUser businessUser;
 
     /*DRIVER*/
     //INSERT
@@ -96,6 +100,14 @@ public class RestDriver {
         return new ResponseEntity<List<DriverDTO>>(listDriverDTO,HttpStatus.OK);
     }
 
+    /*---------------------------------------------LOGIN--------------------------------------------------*/
+    @PostMapping("/sign-in")
+    public UserDTO signin(@RequestBody UserDTO userDTO){
+        UserDTO userDTO1;
+        userDTO1 = convertUserToDto(businessUser.signin(userDTO.getEmail(),userDTO.getPassword()));
+        return userDTO1;
+    }
+
     //-----------------------------------------------------DTO----------------------------------------------------------
     /*DRIVER DTO*/
     private DriverDTO convertToDto(Driver driver) {
@@ -112,6 +124,14 @@ public class RestDriver {
         return list.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
+    }
+
+    //-----------------------------------------------------DTO----------------------------------------------------------
+    /*DRIVER DTO*/
+    private UserDTO convertUserToDto(User user) {
+        ModelMapper modelMapper = new ModelMapper();
+        UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+        return userDTO;
     }
 
 }
