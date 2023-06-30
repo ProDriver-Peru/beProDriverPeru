@@ -3,6 +3,7 @@ package pe.prodriverperu.beprodriverperu.dtos;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pe.prodriverperu.beprodriverperu.entities.Employer;
 import pe.prodriverperu.beprodriverperu.entities.User;
 
 import javax.persistence.Column;
@@ -20,5 +21,8 @@ public class JobOfferDTO {
     private Integer experienceyears;
     private Integer appliers;
     private String vehicle;
-    private User idEmployer;
+    private Employer idEmployer;
+    private String arrangement;
+    private String location;
+    private String area;
 }

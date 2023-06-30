@@ -14,6 +14,7 @@ import java.time.Instant;
 @Table(name = "notification")
 public class Notification {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -23,11 +24,11 @@ public class Notification {
     @Column(name = "\"timestamp\"", nullable = false)
     private Instant timestamp;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_user_driver", nullable = false)
     private Driver idUserDriver;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_user_employer", nullable = false)
     private Employer idUserEmployer;
 }

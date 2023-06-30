@@ -13,6 +13,7 @@ import pe.prodriverperu.beprodriverperu.entities.Notification;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = {"http://172.190.169.21"})
 @RestController
 @RequestMapping("/api")
 public class RestNotification {
@@ -29,6 +30,7 @@ public class RestNotification {
             notification = convertToEntityNotification(notificationDTO);
             notification = businessNotification.insertNotification(notification);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible registrar notificación");
         }
         return new ResponseEntity<NotificationDTO>(convertToDtoNotification(notification),HttpStatus.OK);
@@ -36,13 +38,14 @@ public class RestNotification {
 
     //NOTIFICATION BY ID
     @GetMapping("/notification/{id}")
-    public ResponseEntity<NotificationDTO> getNotificationById(@PathVariable(name = "idNotification") Integer idNotification){
+    public ResponseEntity<NotificationDTO> getNotificationById(@PathVariable(name = "id") Integer idNotification){
         Notification notification;
         NotificationDTO notificationDTO;
         try{
             notification = businessNotification.listNotificationById(idNotification);
             notificationDTO = convertToDtoNotification(notification);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible encontrar datos de la notificación");
         }
         return new ResponseEntity<NotificationDTO>(notificationDTO, HttpStatus.OK);
@@ -57,6 +60,7 @@ public class RestNotification {
             notificationList = businessNotification.notificationList(idEmployer);
             notificationDTOS = convertToLisDtoNotification(notificationList);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido listar");
         }
         return new ResponseEntity<List<NotificationDTO>>(notificationDTOS, HttpStatus.OK);

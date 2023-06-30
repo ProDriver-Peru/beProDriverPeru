@@ -31,12 +31,12 @@ public class BusinessAppliersperjoboffer {
     }
     //LIST APPLIER BY ID OFERTA DE TRABAJO
     public List<Appliersperjoboffer> listAppliersperJobOfferByIdJobOffer(Integer id){
-        return repositoryAppliersperjoboffer.findByIdJoboffer(id);
+        return repositoryAppliersperjoboffer.findIdJobOffer(id);
     }
 
     //LIST APPLIERS BY ID DRIVER
     public List<Appliersperjoboffer> listAppliersperjobofferByIdDrivr(Integer id){
-        return repositoryAppliersperjoboffer.findByIdDriver(id);
+        return repositoryAppliersperjoboffer.findIdDriver(id);
     }
 
 }

@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 import pe.prodriverperu.beprodriverperu.entities.Employer;
 import pe.prodriverperu.beprodriverperu.repositories.RepositoryEmployer;
 
+import java.util.List;
+
 @Service
-public class BusinessEmployer{
+public class BusinessEmployer {
     @Autowired
     private RepositoryEmployer repositoryEmployer;
 
@@ -26,7 +28,5 @@ public class BusinessEmployer{
     public Employer listByIdEmployer(Integer id){
         Employer employer = repositoryEmployer.findById(id).get();
         return employer;
-
     }
-
 }

@@ -31,5 +31,8 @@ public class Driver {
     @Column(name = "license", nullable = false, length = 16)
     private String license;
 
+    @Column(name = "sector", nullable = false)
+    private String sector;
+
 
 }

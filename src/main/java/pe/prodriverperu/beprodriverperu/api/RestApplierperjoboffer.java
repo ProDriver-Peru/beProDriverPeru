@@ -15,6 +15,7 @@ import pe.prodriverperu.beprodriverperu.entities.Driver;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = {"http://172.190.169.21"})
 @RestController
 @RequestMapping("/api")
 public class RestApplierperjoboffer {
@@ -29,6 +30,7 @@ public class RestApplierperjoboffer {
             appliersperjoboffer = convertToEntityAppliersperjoboffer(appliersperjobofferDTO);
             appliersperjoboffer = businessAppliersperjoboffer.inserApplierperjoboffer(appliersperjoboffer);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible registrar");
         }
         return convertToDtoAppliersperJobOffer(appliersperjoboffer);
@@ -44,6 +46,7 @@ public class RestApplierperjoboffer {
             appliersperjobofferUpdate = businessAppliersperjoboffer.updateAppliersperjoboffer(id, appliersperjoboffer);
             appliersperjobofferDTO = convertToDtoAppliersperJobOffer(appliersperjobofferUpdate);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible actualizar");
         }
         return new ResponseEntity<AppliersperjobofferDTO>(appliersperjobofferDTO, HttpStatus.OK);
@@ -58,6 +61,7 @@ public class RestApplierperjoboffer {
             appliersperjoboffer = businessAppliersperjoboffer.listByIdApplierperjoboffer(id);
             appliersperjobofferDTO = convertToDtoAppliersperJobOffer(appliersperjoboffer);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible encontrar sus datos");
         }
         return new ResponseEntity<AppliersperjobofferDTO>(appliersperjobofferDTO,HttpStatus.OK);
@@ -72,6 +76,7 @@ public class RestApplierperjoboffer {
             listAppliersperjoboffer = businessAppliersperjoboffer.listAppliersperJobOfferByIdJobOffer(idJobOffer);
             listAppliersperjobofferDTO = convertToLisDtoAppliersperJobOffer(listAppliersperjoboffer);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido listar");
         }
         return new ResponseEntity<List<AppliersperjobofferDTO>>(listAppliersperjobofferDTO,HttpStatus.OK);
@@ -86,6 +91,7 @@ public class RestApplierperjoboffer {
             listAppliersperjoboffer = businessAppliersperjoboffer.listAppliersperjobofferByIdDrivr(idDriver);
             listAppliersperjobofferDTO = convertToLisDtoAppliersperJobOffer(listAppliersperjoboffer);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido listar");
         }
         return new ResponseEntity<List<AppliersperjobofferDTO>>(listAppliersperjobofferDTO,HttpStatus.OK);

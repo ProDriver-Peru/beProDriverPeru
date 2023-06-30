@@ -7,17 +7,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pe.prodriverperu.beprodriverperu.business.BusinessDriver;
+import pe.prodriverperu.beprodriverperu.business.BusinessUser;
 import pe.prodriverperu.beprodriverperu.dtos.*;
 import pe.prodriverperu.beprodriverperu.entities.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = {"http://172.190.169.21"})
 @RestController
 @RequestMapping("/api")
 public class RestDriver {
     @Autowired
     private BusinessDriver businessDriver;
+
+    @Autowired
+    private BusinessUser businessUser;
 
     /*DRIVER*/
     //INSERT
@@ -28,6 +33,7 @@ public class RestDriver {
             driver = convertToEntity(driverDTO);
             driver = businessDriver.insertDriver(driver);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible registrar");
         }
         return convertToDto(driver);
@@ -43,6 +49,7 @@ public class RestDriver {
             driverUpdate = businessDriver.updateDriver(id, driver);
             driverDTO = convertToDto(driverUpdate);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible actualizar");
         }
         return new ResponseEntity<DriverDTO>(driverDTO, HttpStatus.OK);
@@ -57,6 +64,7 @@ public class RestDriver {
             driver = businessDriver.listByIdDriver(id);
             driverDTO = convertToDto(driver);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible encontrar sus datos");
         }
         return new ResponseEntity<DriverDTO>(driverDTO,HttpStatus.OK);
@@ -71,14 +79,34 @@ public class RestDriver {
             listDriver=businessDriver.listbyLicenseDriver(license);
             listDriverDTO=convertToLisDto(listDriver);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido listar");
         }
         return new ResponseEntity<List<DriverDTO>>(listDriverDTO,HttpStatus.OK);
     }
 
-    /*-----------------------------------------------------*/
-    /*EMPLOYER*/
+    /*LISTAR DRIVERS*/
+    @GetMapping("/driver")
+    public ResponseEntity<List<DriverDTO>> listDriver(){
+        List<Driver> listDriver;
+        List<DriverDTO> listDriverDTO;
+        try{
+            listDriver = businessDriver.listDriver();
+            listDriverDTO = convertToLisDto(listDriver);
+        } catch (Exception e){
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido listar");
+        }
+        return new ResponseEntity<List<DriverDTO>>(listDriverDTO,HttpStatus.OK);
+    }
 
+    /*---------------------------------------------LOGIN--------------------------------------------------*/
+    @PostMapping("/sign-in")
+    public UserDTO signin(@RequestBody UserDTO userDTO){
+        UserDTO userDTO1;
+        userDTO1 = convertUserToDto(businessUser.signin(userDTO.getEmail(),userDTO.getPassword()));
+        return userDTO1;
+    }
 
     //-----------------------------------------------------DTO----------------------------------------------------------
     /*DRIVER DTO*/
@@ -96,6 +124,14 @@ public class RestDriver {
         return list.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
+    }
+
+    //-----------------------------------------------------DTO----------------------------------------------------------
+    /*DRIVER DTO*/
+    private UserDTO convertUserToDto(User user) {
+        ModelMapper modelMapper = new ModelMapper();
+        UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+        return userDTO;
     }
 
 }

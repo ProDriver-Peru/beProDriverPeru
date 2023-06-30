@@ -13,6 +13,7 @@ import pe.prodriverperu.beprodriverperu.entities.Joboffer;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = {"http://172.190.169.21"})
 @RestController
 @RequestMapping("/api")
 public class RestJoboffer {
@@ -29,6 +30,7 @@ public class RestJoboffer {
             joboffer=convertToEntityJobOffer(jobOfferDTO);
             joboffer=businessJobOffer.insertJobOffer(joboffer);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible registrar Oferta de trabajo");
         }
         return convertToDtoJobOffer(joboffer);
@@ -44,6 +46,7 @@ public class RestJoboffer {
             jobofferUpdate = businessJobOffer.updateJobOffer(id,joboffer);
             jobOfferDTO = convertToDtoJobOffer(jobofferUpdate);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible actualizar oferta de trabajo");
         }
         return new ResponseEntity<JobOfferDTO>(jobOfferDTO, HttpStatus.OK);
@@ -57,6 +60,7 @@ public class RestJoboffer {
             joboffer = businessJobOffer.getByIdJobOffer(idJoboffer);
             jobOfferDTO = convertToDtoJobOffer(joboffer);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible encontrar datos de la oferta de trabajo");
         }
         return new ResponseEntity<JobOfferDTO>(jobOfferDTO,HttpStatus.OK);
@@ -71,6 +75,7 @@ public class RestJoboffer {
             joboffersList = businessJobOffer.listJobOfferByIdEmployer(idEmployer);
             jobOfferDTOSList = convertToLisDtoJobOffer(joboffersList);
         }catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido listar");
         }
         return new ResponseEntity<List<JobOfferDTO>>(jobOfferDTOSList, HttpStatus.OK);
@@ -82,6 +87,7 @@ public class RestJoboffer {
         try{
             businessJobOffer.delete(id);
         } catch (Exception e){
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible eliminar la oferta de trabajo");
         }
     }

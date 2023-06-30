@@ -33,4 +33,9 @@ public class BusinessDriver {
         return repositoryDriver.findByLicensetype(license);
     }
 
+    //LIST DRIVERS
+    public List<Driver> listDriver(){
+        return repositoryDriver.findAll();
+    }
+
 }
