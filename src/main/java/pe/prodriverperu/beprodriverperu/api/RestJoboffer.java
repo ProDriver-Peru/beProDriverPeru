@@ -15,8 +15,8 @@ import pe.prodriverperu.beprodriverperu.entities.Joboffer;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = {"http://18.119.164.9"})
-//@CrossOrigin(origins = {"http://localhost:4200"})
+//@CrossOrigin(origins = {"http://18.119.164.9"})
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
 public class RestJoboffer {
@@ -26,6 +26,7 @@ public class RestJoboffer {
     /*JOB OFFER*/
 
     //INSERT JOBOFFER
+    @CrossOrigin(origins = {"http://localhost:4200"})
     @PostMapping("/joboffer")
     public ResponseEntity<JobOfferDTO> insertJobOfferDTO(@RequestBody JobOfferDTO jobOfferDTO){
         Joboffer joboffer;
