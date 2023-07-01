@@ -15,7 +15,8 @@ import pe.prodriverperu.beprodriverperu.entities.Joboffer;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = {"http://172.190.169.21"})
+@CrossOrigin(origins = {"http://18.119.164.9"})
+//@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
 public class RestJoboffer {
@@ -26,7 +27,7 @@ public class RestJoboffer {
 
     //INSERT JOBOFFER
     @PostMapping("/joboffer")
-    public JobOfferDTO insertJobOfferDTO(@RequestBody JobOfferDTO jobOfferDTO){
+    public ResponseEntity<JobOfferDTO> insertJobOfferDTO(@RequestBody JobOfferDTO jobOfferDTO){
         Joboffer joboffer;
         try{
             joboffer=convertToEntityJobOffer(jobOfferDTO);
@@ -35,7 +36,7 @@ public class RestJoboffer {
             e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible registrar Oferta de trabajo");
         }
-        return convertToDtoJobOffer(joboffer);
+        return new ResponseEntity<JobOfferDTO>(convertToDtoJobOffer(joboffer),HttpStatus.OK);
     }
 
     //LIST JOB OFFERS

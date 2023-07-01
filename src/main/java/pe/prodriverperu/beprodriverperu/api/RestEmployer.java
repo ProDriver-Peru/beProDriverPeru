@@ -13,6 +13,8 @@ import pe.prodriverperu.beprodriverperu.entities.Employer;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = {"http://18.119.164.9"})
+//@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
 public class RestEmployer {
@@ -21,16 +23,16 @@ public class RestEmployer {
 
     //INSERT
     @PostMapping("/employer")
-    public EmployerDTO insert(@RequestBody EmployerDTO employerDTO){
+    public EmployerDTO insertEmployer(@RequestBody EmployerDTO employerDTO){
         Employer employer;
         try{
-            employer = convertToEntity(employerDTO);
-            employer = businessEmployer.insert(employer);
+            employer = convertToEntityEmployer(employerDTO);
+            employer = businessEmployer.insertEmployer(employer);
         } catch (Exception e){
             e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible registrar");
         }
-        return convertToDto(employer);
+        return convertToDtoEmployer(employer);
     }
 
     //UPDATE
@@ -39,9 +41,9 @@ public class RestEmployer {
         Employer employer;
         Employer employerUpdate;
         try {
-            employer = convertToEntity(employerDTO);
+            employer = convertToEntityEmployer(employerDTO);
             employerUpdate = businessEmployer.updateEmployer(id, employer);
-            employerDTO = convertToDto(employerUpdate);
+            employerDTO = convertToDtoEmployer(employerUpdate);
         }catch (Exception e){
             e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible actualizar");
@@ -56,7 +58,7 @@ public class RestEmployer {
         EmployerDTO employerDTO;
         try{
             employer = businessEmployer.listByIdEmployer(id);
-            employerDTO = convertToDto(employer);
+            employerDTO = convertToDtoEmployer(employer);
         } catch (Exception e){
             e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No fue posible encontrar sus datos");
@@ -66,19 +68,19 @@ public class RestEmployer {
 
 
     //---------DTO----------
-    private EmployerDTO convertToDto(Employer employer) {
+    private EmployerDTO convertToDtoEmployer(Employer employer) {
         ModelMapper modelMapper = new ModelMapper();
         EmployerDTO employerDTO = modelMapper.map(employer, EmployerDTO.class);
         return employerDTO;
     }
-    private Employer convertToEntity(EmployerDTO employerDTO) {
+    private Employer convertToEntityEmployer(EmployerDTO employerDTO) {
         ModelMapper modelMapper = new ModelMapper();
         Employer post = modelMapper.map(employerDTO, Employer.class);
         return post;
     }
-    private List<EmployerDTO> convertToLisDto(List<Employer> list){
+    private List<EmployerDTO> convertToLisDtoEmployer(List<Employer> list){
         return list.stream()
-                .map(this::convertToDto)
+                .map(this::convertToDtoEmployer)
                 .collect(Collectors.toList());
     }
 }

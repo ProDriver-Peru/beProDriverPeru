@@ -14,7 +14,8 @@ import pe.prodriverperu.beprodriverperu.entities.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = {"http://172.190.169.21"})
+@CrossOrigin(origins = {"http://18.119.164.9"})
+//@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
 public class RestDriver {
@@ -106,6 +107,8 @@ public class RestDriver {
     }
 
     /*---------------------------------------------LOGIN--------------------------------------------------*/
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/sign-in")
     public UserDTO signin(@RequestBody UserDTO userDTO){
         UserDTO userDTO1;

@@ -13,7 +13,8 @@ import pe.prodriverperu.beprodriverperu.entities.Notification;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = {"http://172.190.169.21"})
+@CrossOrigin(origins = {"http://18.119.164.9"})
+//@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
 public class RestNotification {

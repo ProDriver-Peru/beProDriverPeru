@@ -13,7 +13,7 @@ public class BusinessEmployer {
     private RepositoryEmployer repositoryEmployer;
 
     //INSERT
-    public Employer insert(Employer employer) {
+    public Employer insertEmployer(Employer employer) {
         Employer employer1 = repositoryEmployer.save(employer);
         return employer1;
     }

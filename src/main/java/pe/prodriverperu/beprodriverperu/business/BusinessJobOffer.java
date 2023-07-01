@@ -16,7 +16,8 @@ public class BusinessJobOffer {
 
     //INSERT
     public Joboffer insertJobOffer(Joboffer joboffer){
-        return repositoryJobOffer.save(joboffer);
+        Joboffer joboffer1 = repositoryJobOffer.save(joboffer);
+        return joboffer1;
     }
     //UPDATE
     public Joboffer updateJobOffer(Integer id, Joboffer jobofferUpdate){
