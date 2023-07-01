@@ -26,7 +26,7 @@ public class RestJoboffer {
     /*JOB OFFER*/
 
     //INSERT JOBOFFER
-    @CrossOrigin(origins = {"http://localhost:4200"})
+    @CrossOrigin(origins = {"http://18.119.164.9"})
     @PostMapping("/jobOffer")
     public ResponseEntity<JobOfferDTO> insertJobOfferDTO(@RequestBody JobOfferDTO jobOfferDTO){
         Joboffer joboffer;
@@ -101,8 +101,8 @@ public class RestJoboffer {
     }
 
     //LIST USER BY ID EMPLOYER
-    @GetMapping("/jobOffer/idJobOffer/{idEmployer}")
-    public ResponseEntity<List<DriverDTO>> listJDriverByIdJobOffer(@PathVariable(name = "idEmployer")Integer idEmployer){
+    @GetMapping("/jobOffer/drivers/{idJobOffer}")
+    public ResponseEntity<List<DriverDTO>> listJDriverByIdJobOffer(@PathVariable(name = "idJobOffer")Integer idEmployer){
         List<Driver> driverList;
         List<DriverDTO> driverDTOList;
         try{
