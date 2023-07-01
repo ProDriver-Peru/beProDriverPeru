@@ -15,8 +15,8 @@ import pe.prodriverperu.beprodriverperu.entities.Joboffer;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//@CrossOrigin(origins = {"http://18.119.164.9"})
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://18.119.164.9"})
+//@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
 public class RestJoboffer {
@@ -27,7 +27,7 @@ public class RestJoboffer {
 
     //INSERT JOBOFFER
     @CrossOrigin(origins = {"http://localhost:4200"})
-    @PostMapping("/joboffer")
+    @PostMapping("/jobOffer")
     public ResponseEntity<JobOfferDTO> insertJobOfferDTO(@RequestBody JobOfferDTO jobOfferDTO){
         Joboffer joboffer;
         try{
@@ -41,7 +41,7 @@ public class RestJoboffer {
     }
 
     //LIST JOB OFFERS
-    @GetMapping("/joboffer")
+    @GetMapping("/jobOffer")
     public ResponseEntity<List<JobOfferDTO>> listJobOffer(){
         List<Joboffer> listJobOffer;
         List<JobOfferDTO> listJobOfferDTO;
@@ -56,7 +56,7 @@ public class RestJoboffer {
     }
 
     //UPDATE JOBOFFER
-    @PutMapping("/joboffer/{id}")
+    @PutMapping("/jobOffer/{id}")
     public ResponseEntity<JobOfferDTO> updateJobOffer(@PathVariable(value = "id")Integer id, @RequestBody JobOfferDTO jobOfferDTO){
         Joboffer joboffer;
         Joboffer jobofferUpdate;

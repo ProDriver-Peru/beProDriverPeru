@@ -13,8 +13,8 @@ import pe.prodriverperu.beprodriverperu.entities.Employer;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//@CrossOrigin(origins = {"http://18.119.164.9"})
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://18.119.164.9"})
+//@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
 public class RestEmployer {
