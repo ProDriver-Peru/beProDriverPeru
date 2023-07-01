@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface RepositoryDriver extends JpaRepository<Driver, Integer> {
     List<Driver> findByLicensetype(String licenseType);
+    List<Driver> findAllByLicensetype(String licenseType);
 }

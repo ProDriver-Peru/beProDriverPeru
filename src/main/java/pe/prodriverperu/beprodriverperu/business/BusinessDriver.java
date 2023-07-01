@@ -38,4 +38,9 @@ public class BusinessDriver {
         return repositoryDriver.findAll();
     }
 
+    //FILTER DRIVERS BY LICENSE
+    public List<Driver> filterDriversByLicense(String licenseType) {
+        return repositoryDriver.findAllByLicensetype(licenseType);
+    }
+
 }

@@ -100,6 +100,11 @@ public class RestDriver {
         return new ResponseEntity<List<DriverDTO>>(listDriverDTO,HttpStatus.OK);
     }
 
+    @GetMapping("/filter/{licenseType}")
+    public List<Driver> filterDriversByLicense(@PathVariable("licenseType") String licenseType) {
+        return businessDriver.filterDriversByLicense(licenseType);
+    }
+
     /*---------------------------------------------LOGIN--------------------------------------------------*/
     @PostMapping("/sign-in")
     public UserDTO signin(@RequestBody UserDTO userDTO){
